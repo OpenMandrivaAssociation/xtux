@@ -1,8 +1,8 @@
-Summary:	A multiplayer arcade game featuring open-source mascots
 Name:		xtux
 Version:	20030306
-Release:	%mkrel 7
+Release:	%mkrel 8
 Epoch:		0
+Summary:	Multiplayer arcade game featuring open-source mascots
 Group:		Games/Arcade
 License:	GPL
 URL:		http://xtux.sourceforge.net/
@@ -35,7 +35,7 @@ evil lord Gates.
 %{__perl} -pi -e 's|./tux_serv|%{_gamesbindir}/tux_serv|;' src/client/menu.c
 
 %build
-%make CC="%{__cc} %{optflags}" DATADIR="%{_gamesdatadir}/%{name}" X11LIB="-L%{_prefix}/X11R6/%{_lib} -lX11"
+%{make} CC="%{__cc} %{optflags}" DATADIR="%{_gamesdatadir}/%{name}" X11LIB="-L%{_prefix}/X11R6/%{_lib} -lX11"
 
 %install
 %{__mkdir_p} %{buildroot}%{_gamesbindir}
@@ -77,7 +77,7 @@ Type=Application
 Categories=Game;ArcadeGame;X-MandrivaLinux-MoreApplications-Games-Arcade;
 EOF
 
-find %{buildroot}%{_gamesdatadir}/%{name}/images -type d -name ".xvpics" | xargs %{__rm} -rf
+%{_bindir}/find %{buildroot}%{_gamesdatadir}/%{name}/images -type d -name ".xvpics" | %{_bindir}/xargs -t %{__rm} -r
 
 %clean
 %{__rm} -rf %{buildroot}
