@@ -67,7 +67,6 @@ EOF
 %{__mkdir_p} %{buildroot}%{_datadir}/applications
 %{__cat} > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
-Encoding=UTF-8
 Name=X-Tux
 Comment=X-Tux
 Exec=%{_gamesbindir}/%{name}"
