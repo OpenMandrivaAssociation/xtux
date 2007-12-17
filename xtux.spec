@@ -12,7 +12,6 @@ Source2:	%{name}-32.png
 Source3:	%{name}-48.png
 BuildRequires:	xpm-devel
 BuildRequires:	X11-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 2005: Microsoft finally releases Windows2000. The few remaining in line
