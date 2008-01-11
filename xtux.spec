@@ -52,17 +52,6 @@ evil lord Gates.
 %{__install} -D -m 644 %{SOURCE3} %{buildroot}%{_miconsdir}/%{name}.png
 
 # menus
-%{__mkdir_p} %{buildroot}%{_menudir}
-%{__cat} > %{buildroot}%{_menudir}/%{name} << EOF
-?package(%{name}): \
-needs="x11" \
-section="More Applications/Games/Arcade" \
-title="X-Tux" \
-longtitle="X-Tux" \
-command="%{_gamesbindir}/%{name}" \
-icon="%{name}.png" \
-xdg=true
-EOF
 
 %{__mkdir_p} %{buildroot}%{_datadir}/applications
 %{__cat} > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
@@ -93,7 +82,6 @@ EOF
 %attr(0755,root,root) %{_gamesbindir}/%{name}
 %attr(0755,root,root) %{_gamesbindir}/tux_serv
 %{_gamesdatadir}/%{name}
-%{_menudir}/%{name}
 %{_iconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
