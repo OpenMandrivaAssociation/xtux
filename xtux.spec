@@ -1,15 +1,16 @@
 Name:		xtux
 Version:	20030306
-Release:	%mkrel 10
+Release:	%mkrel 11
 Epoch:		0
 Summary:	Multiplayer arcade game featuring open-source mascots
 Group:		Games/Arcade
-License:	GPL
+License:	GPL+ and LGPLv2+
 URL:		http://xtux.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-src-%{version}.tar.bz2
 Source1:	%{name}-16.png
 Source2:	%{name}-32.png
 Source3:	%{name}-48.png
+Patch:		xtux-fix-format-strings.patch
 BuildRequires:	xpm-devel
 BuildRequires:	X11-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
@@ -32,6 +33,7 @@ evil lord Gates.
 
 %prep
 %setup -q -n %{name}
+%patch -p2
 %{__perl} -pi -e 's|./tux_serv|%{_gamesbindir}/tux_serv|;' src/client/menu.c
 
 %build
@@ -58,7 +60,7 @@ evil lord Gates.
 [Desktop Entry]
 Name=X-Tux
 Comment=X-Tux
-Exec=%{_gamesbindir}/%{name}"
+Exec=%{_gamesbindir}/%{name}
 Icon=%{name}
 Terminal=false
 Type=Application
