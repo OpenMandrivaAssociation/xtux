@@ -1,6 +1,6 @@
 Name:		xtux
 Version:	20030306
-Release:	%mkrel 11
+Release:	%mkrel 12
 Epoch:		0
 Summary:	Multiplayer arcade game featuring open-source mascots
 Group:		Games/Arcade
