@@ -1,6 +1,6 @@
 Name:		xtux
 Version:	20030306
-Release:	%mkrel 12
+Release:	%mkrel 13
 Epoch:		0
 Summary:	Multiplayer arcade game featuring open-source mascots
 Group:		Games/Arcade
@@ -12,7 +12,6 @@ Source2:	%{name}-32.png
 Source3:	%{name}-48.png
 Patch:		xtux-fix-format-strings.patch
 BuildRequires:	xpm-devel
-BuildRequires:	X11-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
@@ -29,7 +28,7 @@ massive Beowulf machine capable of cracking the security on Microsofts
 secret database. Upload yourself into the internet, liberate friendly
 Linux sites, then battle your way into microsoft.com destroying all you
 can find. Only then can you turn your wrath towards your nemisis, the
-evil lord Gates. 
+evil lord Gates.
 
 %prep
 %setup -q -n %{name}
@@ -37,7 +36,7 @@ evil lord Gates.
 %{__perl} -pi -e 's|./tux_serv|%{_gamesbindir}/tux_serv|;' src/client/menu.c
 
 %build
-%{make} CC="%{__cc} %{optflags}" DATADIR="%{_gamesdatadir}/%{name}" X11LIB="-L%{_prefix}/X11R6/%{_lib} -lX11"
+%{make} CC="%{__cc} %{optflags}" DATADIR="%{_gamesdatadir}/%{name}" X11LIB="-lX11"
 
 %install
 %{__mkdir_p} %{buildroot}%{_gamesbindir}
