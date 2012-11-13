@@ -1,0 +1,13 @@
+--- ./xtux/src/server/sv_netmsg_send.c~	2003-01-07 08:02:10.000000000 +0100
++++ ./xtux/src/server/sv_netmsg_send.c	2009-04-01 16:15:17.000000000 +0200
+@@ -55,8 +55,8 @@
+     netmsg msg;
+ 
+     msg.type = NETMSG_TEXTMESSAGE;
+-    snprintf(msg.textmessage.sender, 32, sender);
+-    snprintf(msg.textmessage.string, 32, string);
++    snprintf(msg.textmessage.sender, 32, "%s", sender);
++    snprintf(msg.textmessage.string, 32, "%s", string);
+     net_put_message(cl->nc, msg);
+ 
+ }
