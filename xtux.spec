@@ -1,7 +1,6 @@
 Name:		xtux
 Version:	20030306
-Release:	%mkrel 13
-Epoch:		0
+Release:	13
 Summary:	Multiplayer arcade game featuring open-source mascots
 Group:		Games/Arcade
 License:	GPL+ and LGPLv2+
@@ -12,7 +11,6 @@ Source2:	%{name}-32.png
 Source3:	%{name}-48.png
 Patch:		xtux-fix-format-strings.patch
 BuildRequires:	xpm-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 2005: Microsoft finally releases Windows2000. The few remaining in line
@@ -45,7 +43,7 @@ evil lord Gates.
 %{__install} -m 755 tux_serv %{buildroot}%{_gamesbindir}
 
 %{__mkdir_p} %{buildroot}%{_gamesdatadir}/%{name}
-%{__cp} -a data/* %{buildroot}%{_gamesdatadir}/%{name}
+cp -a data/* %{buildroot}%{_gamesdatadir}/%{name}
 
 # icons
 %{__install} -D -m 644 %{SOURCE1} %{buildroot}%{_liconsdir}/%{name}.png
@@ -68,19 +66,6 @@ EOF
 
 %{_bindir}/find %{buildroot}%{_gamesdatadir}/%{name}/images -type d -name ".xvpics" | %{_bindir}/xargs -t %{__rm} -r
 
-%clean
-%{__rm} -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post
-%{update_menus}
-%endif
- 
-%if %mdkversion < 200900
-%postun
-%{clean_menus}
-%endif
-
 %files
 %defattr(0644,root,root,0755)
 %doc AUTHORS CHANGELOG COPYING README README.GGZ doc/*
@@ -91,3 +76,4 @@ EOF
 %{_miconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
 %{_datadir}/applications/*
+
