@@ -1,6 +1,6 @@
 Name:		xtux
 Version:	20030306
-Release:	13
+Release:	14
 Summary:	Multiplayer arcade game featuring open-source mascots
 Group:		Games/Arcade
 License:	GPL+ and LGPLv2+
