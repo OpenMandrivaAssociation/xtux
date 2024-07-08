@@ -1,16 +1,17 @@
 Name:		xtux
 Version:	20030306
-Release:	14
+Release:	15
 Summary:	Multiplayer arcade game featuring open-source mascots
 Group:		Games/Arcade
 License:	GPL+ and LGPLv2+
 URL:		http://xtux.sourceforge.net/
-Source0:	http://downloads.sourceforge.net/%{name}/%{name}-src-%{version}.tar.bz2
+Source0:	https://downloads.sourceforge.net/project/xtux/xtux/%{version}/xtux-src-%{version}.tar.gz
 Source1:	%{name}-16.png
 Source2:	%{name}-32.png
 Source3:	%{name}-48.png
 Patch:		xtux-fix-format-strings.patch
-BuildRequires:	xpm-devel
+BuildRequires:	pkgconfig(xpm)
+Requires:	x11-font-adobe-75dpi
 
 %description
 2005: Microsoft finally releases Windows2000. The few remaining in line
@@ -29,12 +30,12 @@ can find. Only then can you turn your wrath towards your nemisis, the
 evil lord Gates.
 
 %prep
-%setup -q -n %{name}
-%patch -p2
+%autosetup -p2 -n %{name}
 %{__perl} -pi -e 's|./tux_serv|%{_gamesbindir}/tux_serv|;' src/client/menu.c
 
 %build
-%{make} CC="%{__cc} %{optflags}" DATADIR="%{_gamesdatadir}/%{name}" X11LIB="-lX11"
+# The Makefile isn't SMP safe, avoid any -j (and therefore rpm macros)
+make CC="%{__cc} %{optflags}" DATADIR="%{_gamesdatadir}/%{name}" X11LIB="-lX11"
 
 %install
 %{__mkdir_p} %{buildroot}%{_gamesbindir}
@@ -76,4 +77,3 @@ EOF
 %{_miconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
 %{_datadir}/applications/*
-
