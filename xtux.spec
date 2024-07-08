@@ -31,7 +31,7 @@ evil lord Gates.
 
 %prep
 %autosetup -p2 -n %{name}
-%{__perl} -pi -e 's|./tux_serv|%{_gamesbindir}/tux_serv|;' src/client/menu.c
+sed -i -e 's|./tux_serv|%{_gamesbindir}/tux_serv|;' src/client/menu.c
 
 %build
 # The Makefile isn't SMP safe, avoid any -j (and therefore rpm macros)
