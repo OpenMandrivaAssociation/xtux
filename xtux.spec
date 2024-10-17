@@ -4,7 +4,7 @@ Release:	15
 Summary:	Multiplayer arcade game featuring open-source mascots
 Group:		Games/Arcade
 License:	GPL+ and LGPLv2+
-URL:		http://xtux.sourceforge.net/
+URL:		https://xtux.sourceforge.net/
 Source0:	https://downloads.sourceforge.net/project/xtux/xtux/%{version}/xtux-src-%{version}.tar.gz
 Source1:	%{name}-16.png
 Source2:	%{name}-32.png
